@@ -6,8 +6,8 @@ def dilate(c, n):
     for i in range(0, c.shape[0]):
         for j in range(0, c.shape[1]):
             d = c[i][j]
-            for x in range(max(i - n/2, 0), min(i + n/2 + 1, c.shape[0])):
-                for y in range(max(j - n/2, 0), min(j + n/2 + 1, c.shape[1])): # n should be odd to make patch of n*n
+            for x in range(int(max(i - n/2, 0)), int(min(i + n/2 + 1, c.shape[0]))):
+                for y in range(int(max(j - n/2, 0)), int(min(j + n/2 + 1, c.shape[1]))): # n should be odd to make patch of n*n
                     d = np.maximum(c[x][y], d)
             cm[i][j] = d
     return cm
@@ -17,8 +17,8 @@ def erode(c, n):
     for i in range(0, c.shape[0]):
         for j in range(0, c.shape[1]):
             d = c[i][j]
-            for x in range(max(i - n/2, 0), min(i + n/2 + 1, c.shape[0])):
-                for y in range(max(j - n/2, 0), min(j + n/2 + 1, c.shape[1])): # n should be odd to make patch of n*n
+            for x in range(int(max(i - n/2, 0)), int(min(i + n/2 + 1, c.shape[0]))):
+                for y in range(int(max(j - n/2, 0)), int(min(j + n/2 + 1, c.shape[1]))): # n should be odd to make patch of n*n
                     d = np.minimum(c[x][y], d)
             cm[i][j] = d
     return cm

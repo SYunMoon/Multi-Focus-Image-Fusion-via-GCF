@@ -10,8 +10,9 @@ def RF(f, p, q): # Row Frequency
         for j in range(0, f.shape[1]):
             count = 0.0
             r = 0
-            for x in range(max(i - p/2, 0), min(i + p/2 + 1, f.shape[0])): # p should be odd
-                for y in range(max(j - q/2 + 1, 0), min(j + p/2 + 1, f.shape[1])): # q should be odd to make patch of p*q
+            
+            for x in range(int(max(i - p/2, 0)), int(min(i + p/2 + 1, f.shape[0]))): # p should be odd
+                for y in range(int(max(j - q/2 + 1, 0)), int(min(j + p/2 + 1, f.shape[1]))): # q should be odd to make patch of p*q
                      count = count + 1
                      r = r + (f[x][y] - f[x][y-1])**2
             rf[i][j] = (r/count)**0.5
@@ -25,8 +26,8 @@ def CF(f, p, q): # Column Frequency
         for j in range(0, f.shape[1]):
             count = 0.0
             c = 0
-            for x in range(max(i - p/2 + 1, 0), min(i + p/2 + 1, f.shape[0])): # p should be odd
-                for y in range(max(j - q/2, 0), min(j + p/2 + 1, f.shape[1])): # q should be odd to make patch of p*q
+            for x in range(int(max(i - p/2 + 1, 0)), int(min(i + p/2 + 1, f.shape[0]))): # p should be odd
+                for y in range(int(max(j - q/2, 0)), int(min(j + p/2 + 1, f.shape[1]))): # q should be odd to make patch of p*q
                     count = count + 1
                     c = c + (f[x][y] - f[x - 1][y])**2
             cf[i][j] = (c/count) ** 0.5
@@ -46,8 +47,8 @@ def LV(f, p, q): # Local Variance
         for j in range(0, f.shape[1]):
             count = 0.0
             l = 0
-            for x in range(max(i - p/2 + 1, 0), min(i + p/2 + 1, f.shape[0])): # p should be odd
-                for y in range(max(j - q/2, 0), min(j + p/2 + 1, f.shape[1])): # q should be odd to make patch of p*q
+            for x in range(int(max(i - p/2 + 1, 0)),int(min(i + p/2 + 1, f.shape[0]))): # p should be odd
+                for y in range(int(max(j - q/2, 0)), int(min(j + p/2 + 1, f.shape[1]))): # q should be odd to make patch of p*q
                      count = count + 1
                      l = l + (f[x][y] - u)**2
             lv[i][j] = l/count
